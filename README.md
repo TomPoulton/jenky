@@ -57,6 +57,40 @@ The important part in choosing a typeface for Jenky is to view the font on an
 actual radiator screen, where Jenky will actually be used.  Fonts look very
 different on a 13-inch laptop screen and a 50-inch TV.
 
+### View Filter
+
+If you have a large number of Jenkins jobs and you have broken them down into
+views, you can choose which view you want Jenky to display. Simply add a view
+parameter to the query string e.g:
+
+http://localhost/jenky/index.html?view=My View
+
+Note: Only one view can be chosen at a time, and ideally the URL should be
+encoded (?view=My%20View) in case the browser doesn't to it for you.
+
+### Choose number of columns
+
+It is also possible to choose how many columns the display has, again using
+the query string. If you have long Jenkins job names then:
+
+http://localhost/jenky/index.html?columns=1
+
+will only produce one column and allow the names to use the entire width of
+the screen.
+
+This can be used in conjunction with a view filter.
+
+### Dark Theme
+
+If you are after a UI with a black background then simply uncomment the
+following line in index.html:
+
+<!--<link rel="stylesheet" href="css/dark.css">-->
+
+This theme still has the same functionality as the default, but has a
+similar feel to the [Puppet][] radiator view for a more consisted
+experience if you are using both as part of a monitoring solution.
+
 ## Status and contributing
 
 Jenky is currently in alpha. It is usable but not robust. Jenky is also
@@ -83,6 +117,7 @@ on is not listed in the issues, please add it.
 [TypeKit]: http://typekit.com
 [conf]: https://github.com/wolverian/jenky/blob/master/js/conf.example.js
 [freight]: https://typekit.com/fonts/freight-sans-pro
+[Puppet]: https://puppetlabs.com
 [issues]: https://github.com/wolverian/jenky/issues
 [pull requests]: https://github.com/wolverian/jenky/pulls
 [tw/wolverian]: https://twitter.com/wolverian
