@@ -1,0 +1,16 @@
+body {
+    background-color:#000000;
+}
+
+h2 {
+    font-size: 66px;
+}
+
+.blue {
+    color: #444467;
+}
+
+.red {
+    color: #000000;
+    background-color: #cc2211;
+}
