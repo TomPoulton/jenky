@@ -17,7 +17,7 @@ $(function() {
 
     var JobsList = Backbone.Collection.extend({
         model: Job,
-        url: window.jenky.conf.jenkins.url + '/api/json?tree=jobs[name,color,lastBuild[building,timestamp,estimatedDuration]]',
+        url: getUrl(window),
         sync: function(method, model, options) {
             if (method !== "read")
                 return;
@@ -86,6 +86,12 @@ $(function() {
             $(window).resize(_.throttle(_.bind(this.render, this), 200));
         },
         render: function() {
+            var columns = 2;
+            if (window.location.search) {
+                var columnsParam = getQueryStringParam(window, "columns");
+                if (columnsParam) columns = columnsParam;
+            }
+            
             var windowHeight = $(window).height();
 
             var topMargin = 50;
@@ -96,11 +102,14 @@ $(function() {
             this.$el.css({
                 height: containerHeight + 'px',
                 top: topMargin + 'px',
-                left: leftMargin + 'px'
+                left: leftMargin + 'px',
+                columns: columns.toString(),
+                '-webkit-columns': columns.toString(),
+                '-moz-columns': columns.toString()
             });
 
             var items = this.$el.find('li');
-            var height = Math.floor(containerHeight / Math.ceil(items.length / 2));
+            var height = Math.floor(containerHeight / Math.ceil(items.length / columns));
 
             items.css({
                 height: height
@@ -122,6 +131,21 @@ $(function() {
     });
 
     var app = window.jenky.app = new JenkyView();
+
+    function getUrl(window) {
+        var search = "";
+        if (window.location.search) {
+            var viewParam = getQueryStringParam(window, "view");
+            if (viewParam) search = "/view/" + viewParam;
+        }
+        return window.jenky.conf.jenkins.url + search + '/api/json?tree=jobs[name,color,lastBuild[building,timestamp,estimatedDuration]]';
+    }
+
+    function getQueryStringParam(window, key) {
+        key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+        var match = window.location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+        return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+    }
 
     $('body').css({
         'font-family': window.jenky.conf.jenky.font

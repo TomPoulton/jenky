@@ -114,10 +114,6 @@ body {
     #jobs {
         margin: 0;
 
-        columns: 2;
-        -webkit-columns: 2;
-        -moz-columns: 2;
-
         column-gap: 0;
         -moz-column-gap: 0;
         -webkit-column-gap: 0;
