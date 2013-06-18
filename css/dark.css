@@ -5,6 +5,7 @@ body {
 h2 {
     font-size: 4.4em;
     font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    padding: 4px 6px;
 }
 
 /* Successful Job */
