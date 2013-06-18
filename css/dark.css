@@ -6,11 +6,32 @@ h2 {
     font-size: 66px;
 }
 
+/* Successful Job */
 .blue {
-    color: #444467;
+    color: #666689;
 }
 
+/* Failed Job */
 .red {
     color: #000000;
     background-color: #cc2211;
+}
+
+/* Job with no builds */
+.grey {
+    color: #444444;
+}
+
+/* Job in progress */
+.inprogress {
+    color: #006699;
+}
+.blue_anime {
+    color: #000000;
+    background-color: #006699;
+}
+
+/* Disabled Job / Default */
+html {
+    color: #444444;
 }

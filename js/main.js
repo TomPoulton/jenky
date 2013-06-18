@@ -64,6 +64,8 @@ $(function() {
 
             if (progressElement.length === 0)
                 return;
+                
+            this.el.children[0].className = "inprogress"
 
             var main = progressElement.prev();
 
