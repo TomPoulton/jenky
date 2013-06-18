@@ -27,7 +27,11 @@ h2 {
 .inprogress {
     color: #006699;
 }
-.blue_anime {
+.blue_anime { /* previously successful build */
+    color: #000000;
+    background-color: #006699;
+}
+.red_anime { /* previously failed build */
     color: #000000;
     background-color: #006699;
 }
